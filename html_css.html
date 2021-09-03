@@ -1,1 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+    <title>Document</title>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            background: #ffffff url("cool-background.svg") no-repeat right top;
+
+
+        }
+
+        [type="checkbox"]:checked,
+        [type="checkbox"]:not(:checked) {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .menu-icon:checked+label,
+        .menu-icon:not(:checked)+label {
+            position: fixed;
+            top: 63px;
+            right: 75px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .menu-icon:checked+label:before,
+        .menu-icon:not(:checked)+label:before {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 30px;
+            height: 20px;
+            z-index: 20;
+            top: 0;
+            left: 0;
+            border-top: 2px solid #ececee;
+            border-bottom: 2px solid #ececee;
+            transition: border-width 100ms 1500ms ease,
+                top 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1),
+                height 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1),
+                background-color 200ms ease,
+                transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .menu-icon:checked+label:after,
+        .menu-icon:not(:checked)+label:after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            z-index: 20;
+            top: 10px;
+            right: 4px;
+            background-color: #ececee;
+            margin-top: -1px;
+            transition: width 100ms 1750ms ease,
+                right 100ms 1750ms ease,
+                margin-top 100ms ease,
+                transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .menu-icon:checked+label:before {
+            top: 10px;
+            transform: rotate(45deg);
+            height: 2px;
+            background-color: #ececee;
+            border-width: 0;
+            transition: border-width 100ms 340ms ease,
+                top 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                height 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                background-color 200ms 500ms ease,
+                transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .menu-icon:checked+label:after {
+            width: 30px;
+            margin-top: 0;
+            right: 0;
+            transform: rotate(-45deg);
+            transition: width 100ms ease,
+                right 100ms ease,
+                margin-top 100ms 500ms ease,
+                transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .nav {
+            position: fixed;
+            top: 33px;
+            right: 50px;
+            display: block;
+            width: 80px;
+            height: 80px;
+            padding: 0;
+            margin: 0;
+            z-index: 9;
+            overflow: hidden;
+            box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3);
+            background-color: #353746;
+            animation: border-transform 7s linear infinite;
+            transition: top 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
+                right 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
+                transform 250ms 1100ms ease,
+                width 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
+                height 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @keyframes border-transform {
+
+            0%,
+            100% {
+                border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            }
+
+            14% {
+                border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%;
+            }
+
+            28% {
+                border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
+            }
+
+            42% {
+                border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
+            }
+
+            56% {
+                border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
+            }
+
+            70% {
+                border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
+            }
+
+            84% {
+                border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
+            }
+        }
+
+        .menu-icon:checked~.nav {
+            animation-play-state: paused;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            width: 200%;
+            height: 200%;
+            transition: top 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+                right 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+                transform 250ms 700ms ease,
+                width 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
+                height 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .nav ul {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            display: block;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            z-index: 6;
+            text-align: center;
+            transform: translateY(-50%);
+            list-style: none;
+        }
+
+        .nav ul li {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
+            margin: 10px 0;
+            text-align: center;
+            list-style: none;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(30px);
+            transition: all 250ms linear;
+        }
+
+        .nav ul li:nth-child(1) {
+            transition-delay: 200ms;
+        }
+
+        .nav ul li:nth-child(2) {
+            transition-delay: 150ms;
+        }
+
+        .nav ul li:nth-child(3) {
+            transition-delay: 100ms;
+        }
+
+        .nav ul li:nth-child(4) {
+            transition-delay: 50ms;
+        }
+
+        .nav ul li a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9vh;
+            text-transform: uppercase;
+            line-height: 1.2;
+            font-weight: 800;
+            display: inline-block;
+            position: relative;
+            color: #ececee;
+            transition: all 250ms linear;
+        }
+
+        .nav ul li a:hover {
+            text-decoration: none;
+            color: #ffeba7;
+        }
+
+        .nav ul li a:after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            content: '';
+            height: 2vh;
+            margin-top: -1vh;
+            width: 0;
+            left: 0;
+            background-color: #353746;
+            opacity: 0.8;
+            transition: width 250ms linear;
+        }
+
+        .nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .menu-icon:checked~.nav ul li {
+            pointer-events: auto;
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 350ms ease,
+                transform 250ms ease;
+        }
+
+        .menu-icon:checked~.nav ul li:nth-child(1) {
+            transition-delay: 1400ms;
+        }
+
+        .menu-icon:checked~.nav ul li:nth-child(2) {
+            transition-delay: 1480ms;
+        }
+
+        .menu-icon:checked~.nav ul li:nth-child(3) {
+            transition-delay: 1560ms;
+        }
+
+        .menu-icon:checked~.nav ul li:nth-child(4) {
+            transition-delay: 1640ms;
+        }
+
+        .logo {
+            position: absolute;
+            top: 60px;
+            left: 50px;
+            display: block;
+            z-index: 11;
+            transition: all 250ms linear;
+        }
+
+        .logo img {
+            height: 26px;
+            width: auto;
+            display: block;
+        }
+
+        @media screen and (max-width: 991px) {
+
+            .menu-icon:checked+label,
+            .menu-icon:not(:checked)+label {
+                right: 55px;
+            }
+
+            .logo {
+                left: 30px;
+            }
+
+            .nav {
+                right: 30px;
+            }
+
+            .nav ul li a {
+                font-size: 8vh;
+            }
+        }
+
+        /*Footer css*/
+
+
+        /* $primary-light-blue: #8DB9ED;
+$primary-line-color: #ccc;*/
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            font: 11px "Open Sans", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: auto;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between
+        }
+
+        ul {
+            list-style: none
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffeba7;
+        }
+
+        a:hover {
+            color: cornflowerblue;
+        }
+
+        .flex-rw {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        main {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 10em "Oswald", sans-serif;
+            color: rgb(155, 155, 155);
+            line-height: 1
+        }
+
+        footer {
+            background: rgb(55, 55, 55);
+            margin-top: auto;
+            width: 100%
+        }
+
+        .footer-list-top {
+            width: 33.333%
+        }
+
+        .footer-list-top>li {
+            text-align: center;
+            padding-bottom: 10px
+        }
+
+        .footer-list-header {
+            padding: 10px 0 5px 0;
+            color: #fff;
+            font: 2.3vw "Oswald", sans-serif
+        }
+
+        .footer-list-anchor {
+            font: 1.3em "Open Sans", sans-serif
+        }
+
+        .footer-social-section {
+            width: 100%;
+            align-items: center;
+            justify-content: space-around;
+            position: relative;
+            margin-top: 5px;
+        }
+
+        .footer-social-section::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 10px;
+            border-top: 1px solid;
+            width: calc(100% - 20px)
+        }
+
+        .footer-social-overlap {
+            position: relative;
+            z-index: 2;
+            background: rgb(55, 55, 55);
+            padding: 0 20px
+        }
+
+        .footer-social-connect {
+            display: flex;
+            align-items: center;
+            font: 3.5em "Oswald", sans-serif;
+            color: #fff
+        }
+
+        .footer-social-small {
+            font-size: 0.6em;
+            padding: 0px 20px
+        }
+
+        .footer-social-overlap>a {
+            font-size: 3em
+        }
+
+        .footer-social-overlap>a:not(:first-child) {
+            margin-left: 0.38em
+        }
+
+        .footer-bottom-section {
+            width: 100%;
+            padding: 10px;
+            border-top: 1px solid;
+            margin-top: 10px
+        }
+
+        .footer-bottom-section>div:first-child {
+            margin-right: auto
+        }
+
+        .footer-bottom-wrapper {
+            font-size: 1.5em;
+            color: #fff
+        }
+
+        .footer-address {
+            display: inline;
+            font-style: normal
+        }
+
+        @media only screen and (max-width: 768px) {
+            .footer-list-header {
+                font-size: 2em
+            }
+
+            .footer-list-anchor {
+                font-size: 1.1em
+            }
+
+            .footer-social-connect {
+                font-size: 2.5em
+            }
+
+            .footer-social-overlap>a {
+                font-size: 2.24em
+            }
+
+            .footer-bottom-wrapper {
+                font-size: 1.3em
+            }
+        }
+
+        @media only screen and (max-width: 568px) {
+            main {
+                font-size: 5em
+            }
+
+            .footer-list-top {
+                width: 100%
+            }
+
+            .footer-list-header {
+                font-size: 3em;
+            }
+
+            .footer-list-anchor {
+                font-size: 1.5em
+            }
+
+            .footer-social-section {
+                justify-content: center
+            }
+
+            .footer-social-section::after {
+                top: 25%
+            }
+
+            .footer-social-connect {
+                margin-bottom: 10px;
+                padding: 0 10px
+            }
+
+            .footer-social-overlap {
+                display: flex;
+                justify-content: center;
+            }
+
+            .footer-social-icons-wrapper {
+                width: 100%;
+                padding: 0
+            }
+
+            .footer-social-overlap>a:not(:first-child) {
+                margin-left: 20px;
+            }
+
+            .footer-bottom-section {
+                padding: 0 5px 10px 5px
+            }
+
+            .footer-bottom-wrapper {
+                text-align: center;
+                width: 100%;
+                margin-top: 10px
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .footer-social-overlap>a {
+                margin: auto
+            }
+
+            .footer-social-overlap>a:not(:first-child) {
+                margin-left: 0;
+            }
+
+            .footer-bottom-rights {
+                display: block
+            }
+        }
+
+        @media only screen and (max-width: 320px) {
+            .footer-list-header {
+                font-size: 2.2em
+            }
+
+            .footer-list-anchor {
+                font-size: 1.2em
+            }
+
+            .footer-social-connect {
+                font-size: 2.4em
+            }
+
+            .footer-social-overlap>a {
+                font-size: 2.24em
+            }
+
+            .footer-bottom-wrapper {
+                font-size: 1.3em
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+
+    <a href="#" class="logo" target="_blank">
+        <img src="#" alt="">
+    </a>
+
+    <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" />
+    <label for="menu-icon"></label>
+    <nav class="nav">
+        <ul class="pt-5">
+            <li><a href="#" style="font-size:x-large;">Section1</a></li>
+            <br>
+            <li><a href="#" style="font-size:x-large;">Section2</a></li>
+            <br>
+            <li><a href="#" style="font-size:x-large;">Section3</a></li>
+            <br>
+            <li><a href="#" style="font-size:x-large;">Section4</a></li>
+        </ul>
+    </nav>
+
+    <div class="section-center">
+        <h1 class="mb-0" style="text-align: center;">Project Heading</h1>
+    </div>
+    <br>
+
+    <div class="about">
+        <h1 style="text-align: center;">About Us</h1>
+        <video src="aboutus2.mp4" muted loop autoplay
+            style="height: 350px; display:block;margin: 0 auto;"></video><br><br>
+
+
+    </div>
+
+
+
+    <br>
+    <div class="head">
+        <h1 style="text-align:center">See AQI Forcast(for upcoming days)</h1>
+        <br>
+        <p style="font-size: large;font-weight: 400;padding-left: 30%;">Date: <input type="text" id="datepicker"></p>
+
+    </div>
+
+    <br>
+
+
+    <div class="head2">
+        <h1 style="text-align:center">See AQI prediction vs actual(for past days)</h1>
+        <br>
+        <p style="font-size: large;font-weight: 400;padding-left: 30%;">Date: <input type="text" id="datepicker"></p>
+    </div>
+    <br>
+    <br>
+
+    <!--FOOTER-->
+
+
+    <footer class="flex-rw">
+
+        <ul class="footer-list-top">
+            <li>
+                <h4 class="footer-list-header">Our Aim</h4>
+            </li>
+            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">GET
+                    TO KNOW US</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">lorem</a>
+            </li>
+            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Lorem</a></li>
+
+
+        </ul>
+        <ul class="footer-list-top">
+            <li>
+                <h4 class="footer-list-header">Section2</h4>
+            </li>
+
+
+            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
+
+
+        </ul>
+        <ul class="footer-list-top">
+            <li id='help'>
+                <h4 class="footer-list-header">Socials</h4>
+            </li>
+
+            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
+            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
+
+        </ul>
+        <section class="footer-social-section flex-rw">
+            <span class="footer-social-overlap footer-social-connect">
+                CONNECT <span class="footer-social-small">with</span> US
+            </span>
+        </section>
+        <section class="footer-bottom-section flex-rw">
+            <div class="footer-bottom-wrapper">
+                <i class="fa fa-copyright" role="copyright">
+
+                </i> Lorem <address class="footer-address" role="company address">India</address><span
+                    class="footer-bottom-rights"> - All Rights Reserved - </span>
+            </div>
+            <div class="footer-bottom-wrapper">
+                <a href="#" class="generic-anchor" rel="nofollow">Terms</a> | <a href="#" class="generic-anchor"
+                    rel="nofollow">Privacy</a>
+            </div>
+        </section>
+    </footer>
+
+
+
+
+</body>
+
+</html>
