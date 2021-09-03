@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
     <title>Document</title>
 
 
@@ -23,22 +31,47 @@
     <label for="menu-icon"></label>
     <nav class="nav">
         <ul class="pt-5">
-            <li><a href="#">Section1</a></li>
-            <li><a href="#">Section2</a></li>
-            <li><a href="#">Section3</a></li>
-            <li><a href="#">Section4</a></li>
+            <li><a href="#" style="font-size:x-large;">Section1</a></li>
+            <br>
+            <li><a href="#" style="font-size:x-large;">Section2</a></li>
+            <br>
+            <li><a href="#" style="font-size:x-large;">Section3</a></li>
+            <br>
+            <li><a href="#" style="font-size:x-large;">Section4</a></li>
         </ul>
     </nav>
 
     <div class="section-center">
-        <h1 class="mb-0">Project Heading</h1>
+        <h1 class="mb-0" style="text-align: center;">Project Heading</h1>
+    </div>
+<br>
+
+<div class="about">
+<h1 style="text-align: center;">About Us</h1>
+<video src="aboutus2.mp4" muted loop autoplay style="height: 350px; display:block;margin: 0 auto;"></video><br><br>
+
+
+</div>
+
+
+
+    <br>
+    <div class="head">
+        <h1 style="text-align:center">See AQI Forcast(for upcoming days)</h1>
+        <br>
+        <p style="font-size: large;font-weight: 400;padding-left: 30%;">Date: <input type="text" id="datepicker"></p>
+
     </div>
 
-    <div class="head">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam inventore quisquam laudantium quia fuga totam?
-        Fuga id debitis enim facere temporibus culpa consequuntur cum voluptate dolorem, expedita sapiente? Inventore
-        doloribus aut esse veniam dolore dicta voluptatibus impedit sed similique deleniti.
+    <br>
+
+
+    <div class="head2">
+        <h1 style="text-align:center">See AQI prediction vs actual(for past days)</h1>
+        <br>
+        <p style="font-size: large;font-weight: 400;padding-left: 30%;">Date: <input type="text" id="datepicker"></p>
     </div>
+    <br>
 
 
 
