@@ -864,13 +864,10 @@ $primary-line-color: #ccc;*/
     <label for="menu-icon"></label>
     <nav class="nav">
         <ul class="pt-5">
-            <li><a href="#" style="font-size:x-large;">Section1</a></li>
+            <li><a href="#sec" style="font-size:x-large;">Section1</a></li>
             <br>
-            <li><a href="#" style="font-size:x-large;">Section2</a></li>
+            <li><a href="#sec2" style="font-size:x-large;">Section2</a></li>
             <br>
-            <li><a href="#" style="font-size:x-large;">Section3</a></li>
-            <br>
-            <li><a href="#" style="font-size:x-large;">Section4</a></li>
         </ul>
     </nav>
 
@@ -922,7 +919,7 @@ $primary-line-color: #ccc;*/
 
 
 
-    <div class="about">
+    <div class="about" id="abt">
         <h1 style="text-align: center; font-family: 'Josefin Sans', sans-serif;">About Us</h1>
         <video src="aboutus2.mp4" muted loop autoplay
         style="height: 350px; display:block;margin: 0 auto;"></video><br><br>
@@ -939,58 +936,58 @@ $primary-line-color: #ccc;*/
 
 <br/>
 
-    <br>
-    <div class="head">
-        <h1 style="text-align:center; font-family: 'Josefin Sans', sans-serif;">See AQI Forcast(for upcoming days)</h1>
+    <div id=sec>
         <br>
-        <p
-            style="font-size: large; font-weight: 400;padding-left: 40%; padding-top: 14px; padding-bottom: 14px;font-family: 'Josefin Sans', sans-serif;">
-            Date: <input type="text" id="datepicker"></p>
+        <div class="head" id="sec1">
+            <h1 style="text-align:center; font-family: 'Josefin Sans', sans-serif;">See AQI Forcast(for upcoming days)</h1>
+            <br>
+            <p
+                style="font-size: large; font-weight: 400;padding-left: 40%; padding-top: 14px; padding-bottom: 14px;font-family: 'Josefin Sans', sans-serif;">
+                Date: <input type="text" id="datepicker"></p>
 
-    </div>
-<br>
-    <br>
-<br><br/>
-
-    <div class="head2">
-        <h1 style="text-align:center; font-family: 'Josefin Sans', sans-serif;">See AQI prediction vs actual(for past
-            days)</h1>
+        </div>
         <br>
-        <p
-            style="font-size: large;font-weight: 400;padding-left: 40%; padding-top: 14px; font-family: 'Josefin Sans', sans-serif;">
-            Date: <input type="text" id="datepicker1"></p>
+            <br>
+        <br><br/>
+
+        <div class="head2">
+            <h1 style="text-align:center; font-family: 'Josefin Sans', sans-serif;">See AQI prediction vs actual(for past days)</h1>
+            <br>
+            <p
+                style="font-size: large;font-weight: 400;padding-left: 40%; padding-top: 14px; font-family: 'Josefin Sans', sans-serif;">
+                Date: <input type="text" id="datepicker1"></p>
+        </div>
+        <br>
+        <br>
     </div>
-    <br>
-    <br>
 
     </div>
     <!--FOOTER-->
 
 
-    <footer class="flex-rw">
+    <footer class="flex-rw" id="sec2">
 
         <ul class="footer-list-top">
             <li>
                 <h4 class="footer-list-header">Our Aim</h4>
             </li>
-            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">GET
-                    TO KNOW US</a></li>
-            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">lorem</a>
+            <li><a href='#abt' class="generic-anchor footer-list-anchor" itemprop="significantLink">Contact Us</a></li>
+            <li><a href='#abt' class="generic-anchor footer-list-anchor" itemprop="significantLink">Our Goals</a>
             </li>
-            <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Lorem</a></li>
+            <li><a href='#abt' class="generic-anchor footer-list-anchor" itemprop="significantLink">Our Team</a></li>
 
 
         </ul>
         <ul class="footer-list-top">
             <li>
-                <h4 class="footer-list-header">Section2</h4>
+                <h4 class="footer-list-header" >Section2</h4>
             </li>
 
 
-            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
-            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
-            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
-            <li><a href='#' class="generic-anchor footer-list-anchor">Lorem</a></li>
+            <li><a href='https://www.bbc.com/news/science-environment-57149747' target="_blank" class="generic-anchor footer-list-anchor">Then And Now</a></li>
+            <li><a href='https://www.sciencedirect.com/science/article/pii/S2589791820300220' target="_blank" class="generic-anchor footer-list-anchor">Reduced Pollution</a></li>
+            <li><a href='https://www.nature.com/articles/s41598-021-83393-9' target="_blank" class="generic-anchor footer-list-anchor">Positive Effects</a></li>
+            <li><a href='https://www.insider.com/before-after-photos-show-less-air-pollution-during-pandemic-lockdown' target="_blank" class="generic-anchor footer-list-anchor">Before And After</a></li>
 
 
         </ul>
